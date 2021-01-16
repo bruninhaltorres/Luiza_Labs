@@ -2,38 +2,28 @@ from django.shortcuts import render, redirect
 from app.forms import UserModelForm
 from django.http import HttpResponse
 from .models import Usuario
-from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-from django.contrib import messages 
-from django.views.decorators.csrf import csrf_protect
 from django.views.decorators.http import require_POST
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_protect
+from django.contrib import messages 
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='/login/')
 def index(request):
-    return HttpResponse("OK")
+    return render(request,'index.html')
 
 def login_user(request):
-    if request.method == 'POST':
-        user = authenticate(username = request.POST['user_name'], password = request.POST['password'])
-        if user is not None:
-            login(request, user)
-            return render(request, 'sucess.html')
     return render(request, 'login.html')
 
 def logout_user(request):
     logout(request)
     return redirect('/login/')
 
-@login_required(login_url='/login/')
-def index(request):
-    return render(request,'index.html')
-
-@csrf_protect
-@require_POST
 def submit_login(request):
     if request.POST:
-        user_name = request.POST.get('user_name')
+        username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(user_name=user_name, password=password)
+        user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
             return redirect('/')
@@ -41,8 +31,15 @@ def submit_login(request):
             messages.error(request, 'Usuário e senha inválidos. Por favor, tente novamente.')
     return redirect('/login/')
 
-def submit_cadastro(request):
-    return render(request, 'sucess.html', context)
+def submit(request):
+    nome = request.POST.get('first_name')
+    sobrenome = request.POST.get('last_name')
+    username = request.POST.get('username')
+    email = request.POST.get('email')
+    senha = request.POST.get('password')
+    usuario = Usuario.objects.create(first_name=nome, last_name=sobrenome, username=username, email=email, password=senha)
+    return render(request, 'sucess.html')
+
 
 def cadastro(request):
     form = UserModelForm(request.POST or None)

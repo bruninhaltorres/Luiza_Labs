@@ -45,8 +45,8 @@ body {
                         <form action="submit/", method="POST">{% csrf_token %}
                             <h1 class="text-center" style="color: rgb(85, 26, 119);">Login</h1>
                             <div class="form-group">
-                                <label>Nome de usuario:</label>
-                                <input type="text" class="form-control" placeholder="usuario" name="user_name">
+                                <label>Usuário</label>
+                                <input type="text" class="form-control" placeholder="Usuário" name="username">
                             </div>
                             <div class="form-group">
                                 <label>Senha</label>
@@ -58,7 +58,7 @@ body {
                                 <br>
                                 <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
                             </div>
-                            <div id="cadastro-link" class="text-right">
+                            <div id="register-link" class="text-right">
                                 <a href="/cadastro/"  style="color: white">Register here</a>
                             </div>
                             <br>
