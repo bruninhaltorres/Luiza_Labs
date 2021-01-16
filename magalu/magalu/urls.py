@@ -23,5 +23,9 @@ from django.conf.urls import url
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cadastro/', views.cadastro, name = 'cadastro'),
-    path('cadastro/submit/', views.submit, name = 'submit'),
+    path('cadastro/submit/', views.submit_cadastro, name = 'submit'),
+    path('login/', views.login_user, name = 'login'),
+    path('login/submit/', views.submit_login),
+    path('logout/', views.logout_user, name = 'logout'),
+    path('', views.index),
 ]

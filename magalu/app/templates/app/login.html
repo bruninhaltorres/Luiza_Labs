@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <title>Market Place</title>
+    <meta charset="utf-8">
+
+    <!--<link rel="stylesheet" href="{% static 'app/css/login.css' %}" />-->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgb(191, 107, 233),rgb(40, 3, 61));
+    height: 100vh;
+  }
+  #login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid #d1d1d1;
+    background-color: #ffffff;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }
+</style>
+
+<body>
+    <div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form action="submit/", method="POST">{% csrf_token %}
+                            <h1 class="text-center" style="color: rgb(85, 26, 119);">Login</h1>
+                            <div class="form-group">
+                                <label>Nome de usuario:</label>
+                                <input type="text" class="form-control" placeholder="usuario" name="user_name">
+                            </div>
+                            <div class="form-group">
+                                <label>Senha</label>
+                                <input type="password" class="form-control" placeholder="Senha" name="password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="remember-me" style="color: rgb(40, 3, 61)"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>
+                                <br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
+                            </div>
+                            <div id="cadastro-link" class="text-right">
+                                <a href="/cadastro/"  style="color: white">Register here</a>
+                            </div>
+                            <br>
+                            <div>
+                                {% for message in messages %}
+                                    <div class="alert alert-danger">
+                                        <strong>Error!</strong> {{message}}
+                                    </div>
+                                {% endfor %}
+                                <!-- <button type="submit/" class="btn btn-green">Login</button>  -->                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
