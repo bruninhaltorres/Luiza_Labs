@@ -8,6 +8,7 @@
     </head>
     
     <body>
+        {% extends 'page.html' %}
         <tbody>
             {% for p in Produtos %}
             <tr>
@@ -17,6 +18,5 @@
             </tr>
             {% endfor %}
         </tbody>
-        {% extends 'page.html' %}
     </body>
 </html>

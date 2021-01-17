@@ -70,13 +70,14 @@ def update_usuario(request, id_usuario):
     usuario.ativo = False
     usuario.save()
     usuario = Usuario.objects.create(first_name = nome, username = username, password = password, email = email, last_name = last_name)
-    return render(request, 'index.html')
+    return render(request, 'detail.html', {'Usuario': usuario})
 
 def inativar(request, id_usuario):
     usuario = Usuario.objects.get(id_usuario = id_usuario)
     usuario.ativo = False
     usuario.save()
-    return render(request, 'index.html', {'Usuario': usuario})
+    usuario = Usuario.objects.filter(ativo = True)
+    return redirect('/perfil/')
 
 def login_user(request):
     return render(request, 'login.html')

@@ -7,7 +7,7 @@ class Usuario(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=100)
     username = models.CharField(max_length=100, default=None)
-    email = models.EmailField()
+    email = models.EmailField(unique=True)
     password = models.CharField(max_length=50, default=None)
     ativo = models.BooleanField(default=True)
 
