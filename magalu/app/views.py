@@ -22,6 +22,30 @@ def perfil_id(request, id_usuario):
     usuario = Usuario.objects.get(id_usuario = id_usuario)
     return render(request, 'detail.html', {'Usuario': usuario})
 
+def alterar(request,id_usuario):
+    usuario = Usuario.objects.get(id_usuario = id_usuario)
+    usuario_form = UserModelForm(request.POST or None)
+    if usuario_form.is_valid():
+        usuario_form.save()
+    return render(request, 'alterar.html', {'usuario': usuario})
+
+def update_usuario(request, id_usuario):
+    nome = request.POST.get('first_name')
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    email = request.POST.get('email')
+    last_name = request.POST.get('last_name')
+    usuario = Usuario.objects.get(id_usuario = id_usuario)
+    usuario.ativo = False
+    usuario.save()
+    usuario = Usuario.objects.create(first_name = nome, username = username, password = password, email = email, last_name = last_name)
+    return render(request, 'index.html')
+
+def inativar(request, id_usuario):
+    usuario = Usuario.objects.get(id_usuario = id_usuario)
+    usuario.ativo = False
+    usuario.save()
+    return render(request, 'index.html', {'Usuario': usuario})
 
 def login_user(request):
     return render(request, 'login.html')

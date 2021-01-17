@@ -30,5 +30,9 @@ urlpatterns = [
     path('logout/', views.logout_user),
     path('perfil/', views.perfil),
     path('perfil/<id_usuario>/', views.perfil_id),
+    path('alterar/<int:id_usuario>/', views.alterar),
+    path('alterar/<int:id_usuario>/submit/', views.update_usuario),
+    path('inativar/<id_usuario>/', views.inativar),
+
 ]
 
