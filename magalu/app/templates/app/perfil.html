@@ -1,22 +1,13 @@
 {% extends 'page.html' %}
 
 {% block content %}
-    <div class="container mt-3">
-        <form enctype="multipart/form-data" action="submit/", method="POST">{% csrf_token %}
-            <div class="container">
-                <div class="form-group row">
-                    <label style="margin-right: 10px;">Pesquisar usuario:</label>
-                    <input type="text" class="form-control col-5" style="margin-right:10px;" name="nome_usuario" value="{{ usuario.nome_usuario }}">
-                    <button type="submit/" class="btn btn-primary"><span class="material-icons" >search</span> Pesquisar</button>
-                </div>
-            </div>
-        </form>
+<div class="container mt-3">
+    <h1 class="text-center">Página de usuario</h1>
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">Nome:</th>
                 <th scope="col">Visualizar:</th>
-                <th scope="col">Editar:</th>
                 
               </tr>
             </thead>
@@ -25,7 +16,6 @@
                 <tr>
                     <td>{{ u.first_name }}</td> 
                     <td><a href="../perfil/{{ u.id_usuario }}"><span class="material-icons">visibility</span></a></td>
-                    <td><a href="../perfil/{{ u.id_usuario }}"><span class="material-icons">create</span></a></td>
                 </tr>
                 {% endfor %}
             </tbody>

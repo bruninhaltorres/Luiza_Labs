@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from app.forms import UserModelForm
 from django.http import HttpResponse
-from .models import Usuario
+from .models import Usuario, Produtos
 from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
@@ -10,7 +10,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login/')
 def index(request):
-    return render(request,'index.html')
+    produtos = Produtos.objects.filter(favorito = False)
+    return render(request, 'list_produtos.html', {'Produtos': produtos})
 
 @login_required(login_url='/login/')
 def perfil(request):
@@ -21,6 +22,36 @@ def perfil(request):
 def perfil_id(request, id_usuario):
     usuario = Usuario.objects.get(id_usuario = id_usuario)
     return render(request, 'detail.html', {'Usuario': usuario})
+
+@login_required(login_url='/login/')
+def detail_produto(request, id_produto):
+    produtos = Produtos.objects.get(id_produto = id_produto)
+    return render(request, 'detail_produtos.html', {'Produtos': produtos})
+
+@login_required(login_url='/login/')
+def list_produtos(request):
+    produtos = Produtos.objects.filter(ativo = True)
+    return render(request, 'list_produtos.html', {'Produtos': produtos})
+
+@login_required(login_url='/login/')
+def favoritar(request, id_produto):
+    produtos = Produtos.objects.get(id_produto = id_produto)
+    produtos.favorito = True
+    produtos.save()
+    return redirect('/favoritos/')
+
+@login_required(login_url='/login/')
+def favoritos(request):
+    produtos = Produtos.objects.filter(favorito=True)
+    return render(request, 'list_favoritos.html', {'Produtos': produtos})
+
+@login_required(login_url='/login/')
+def desfavoritar(request, id_produto):
+    produtos = Produtos.objects.get(id_produto = id_produto)
+    produtos.favorito = False
+    produtos.save()
+    produtos = Produtos.objects.filter(favorito=True)
+    return render(request, 'list_favoritos.html', {'Produtos': produtos})
 
 def alterar(request,id_usuario):
     usuario = Usuario.objects.get(id_usuario = id_usuario)

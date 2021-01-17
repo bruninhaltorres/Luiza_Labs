@@ -33,6 +33,10 @@ urlpatterns = [
     path('alterar/<int:id_usuario>/', views.alterar),
     path('alterar/<int:id_usuario>/submit/', views.update_usuario),
     path('inativar/<id_usuario>/', views.inativar),
-
+    path('produto/', views.list_produtos),
+    path('produto/<id_produto>/', views.detail_produto),
+    path('favoritar/<id_produto>/', views.favoritar),
+    path('desfavoritar/<id_produto>/', views.desfavoritar),
+    path('favoritos/', views.favoritos)
 ]
 

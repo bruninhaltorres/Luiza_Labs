@@ -1,0 +1,27 @@
+{% extends 'page.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <h1 class="text-center">Lista de favoritos</h1>
+        <form enctype="multipart/form-data" action="submit/", method="POST">{% csrf_token %}
+        </form>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Produto:</th>
+                <th scope="col">Desfavoritar:</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                {% for p in Produtos %}
+                <tr>
+                    <td>{{ p.title }}</td> 
+                    <td><a href="../desfavoritar/{{ p.id_produto }}"><span class="material-icons">favorite</span></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>  
+    </div>  
+{% endblock %}

@@ -8,6 +8,15 @@
     </head>
     
     <body>
+        <tbody>
+            {% for p in Produtos %}
+            <tr>
+                <td>{{ p.title }}</td> 
+                <td><a href="../produto/{{ p.id_produto }}"><span class="material-icons">visibility</span></a></td>
+                <td><a href="../produto/{{ p.id_produto }}"><span class="material-icons">create</span></a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
         {% extends 'page.html' %}
     </body>
 </html>

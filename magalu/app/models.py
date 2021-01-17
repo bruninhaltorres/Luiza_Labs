@@ -13,3 +13,14 @@ class Usuario(models.Model):
 
     def __str__(self):
         return self.first_name
+
+class Produtos(models.Model):
+    id_produto = models.AutoField(primary_key=True, null=False, unique=True)
+    title = models.CharField(max_length=200)
+    brand = models.CharField(max_length=100)
+    price = models.FloatField()
+    image = models.ImageField()
+    favorito = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.id_produto)
