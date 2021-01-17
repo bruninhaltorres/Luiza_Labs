@@ -12,6 +12,17 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request,'index.html')
 
+@login_required(login_url='/login/')
+def perfil(request):
+    usuario = Usuario.objects.filter(ativo = True)
+    return render(request, 'perfil.html', {'Usuario': usuario})
+
+@login_required(login_url='/login/')
+def perfil_id(request, id_usuario):
+    usuario = Usuario.objects.get(id_usuario = id_usuario)
+    return render(request, 'detail.html', {'Usuario': usuario})
+
+
 def login_user(request):
     return render(request, 'login.html')
 

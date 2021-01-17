@@ -1,0 +1,45 @@
+{% extends "page.html" %}
+
+{% block content %}
+    <h1 class="text-center">Suas informações</h1>
+    <br>
+  <!-- Ini Modal -->
+  <div class="modal fade" id="modal_confirm">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Deseja realmente apagar?</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>        
+        <!-- Modal body -->
+        <div class="modal-body text-right">
+            <a href="/app/inativar/{{ Produtos.id_produto }}">
+              <button type="button" class="btn btn-danger">SIM</button>
+            </a>
+            <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+        </div>               
+      </div>
+    </div>
+  </div>
+  <!-- End Modal -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <br>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-8">
+                <p><b>Nome completo: </b>{{ Usuario.first_name }} {{ Usuario.last_name }}</p>                  
+                <p><b>Username: </b>{{ Usuario.username }}</p> 
+                <p><b>Email: </b>{{ Usuario.email }}</p>
+
+                <a href="/app/alterar/{{ Produtos.id_produto }}/">
+                  <button type="button" class="btn btn-primary">Alterar</button>
+                </a>
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Apagar perfil</button>
+            </div>
+        </div>
+    </div>  
+    <br>
+{% endblock %}

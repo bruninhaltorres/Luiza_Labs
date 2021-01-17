@@ -1,0 +1,37 @@
+{% extends 'page.html' %}
+
+{% block content %}
+    <div class="container mt-3">
+        <form enctype="multipart/form-data" action="submit/", method="POST">{% csrf_token %}
+            <div class="container">
+                <div class="form-group row">
+                    <label style="margin-right: 10px;">Pesquisar usuario:</label>
+                    <input type="text" class="form-control col-5" style="margin-right:10px;" name="nome_usuario" value="{{ usuario.nome_usuario }}">
+                    <button type="submit/" class="btn btn-primary"><span class="material-icons" >search</span> Pesquisar</button>
+                </div>
+            </div>
+        </form>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome:</th>
+                <th scope="col">Visualizar:</th>
+                <th scope="col">Editar:</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+                {% for u in Usuario %}
+                <tr>
+                    <th scope="row">{{u.id_usuario}}</th>
+                    <td>{{ u.nome_usuario }}</td> 
+                    <td><a href="../perfil/{{ u.id_usuario }}"><span class="material-icons">visibility</span></a></td>
+                    <td><a href="../perfil/{{ u.id_usuario }}"><span class="material-icons">create</span></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>  
+    </div>  
+{% endblock %}
