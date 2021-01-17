@@ -38,6 +38,11 @@ def submit(request):
     email = request.POST.get('email')
     senha = request.POST.get('password')
     usuario = Usuario.objects.create(first_name=nome, last_name=sobrenome, username=username, email=email, password=senha)
+    form = UserModelForm(request.POST or None)
+    context = {'form': form}
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
     return render(request, 'sucess.html')
 
 
