@@ -67,16 +67,14 @@ def update_usuario(request, id_usuario):
     email = request.POST.get('email')
     last_name = request.POST.get('last_name')
     usuario = Usuario.objects.get(id_usuario = id_usuario)
-    usuario.ativo = False
-    usuario.save()
+    usuario.delete()
     usuario = Usuario.objects.create(first_name = nome, username = username, password = password, email = email, last_name = last_name)
     return render(request, 'detail.html', {'Usuario': usuario})
 
 def inativar(request, id_usuario):
     usuario = Usuario.objects.get(id_usuario = id_usuario)
-    usuario.ativo = False
-    usuario.save()
-    usuario = Usuario.objects.filter(ativo = True)
+    usuario.delete()
+    usuario = Usuario.objects.all()
     return redirect('/perfil/')
 
 def login_user(request):
