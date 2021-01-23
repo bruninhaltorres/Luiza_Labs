@@ -19,7 +19,7 @@ class Produtos(models.Model):
     title = models.CharField(max_length=200)
     brand = models.CharField(max_length=100)
     price = models.FloatField()
-    image = models.ImageField()
+    image = models.ImageField(upload_to='app')
     favorito = models.BooleanField(default=False)
 
     def __str__(self):

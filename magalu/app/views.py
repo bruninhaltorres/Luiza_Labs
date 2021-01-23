@@ -29,6 +29,11 @@ def detail_produto(request, id_produto):
     return render(request, 'detail_produtos.html', {'Produtos': produtos})
 
 @login_required(login_url='/login/')
+def detail_produto_favoritado(request, id_produto):
+    produtos = Produtos.objects.get(id_produto = id_produto)
+    return render(request, 'detail_produtos_favoritados.html', {'Produtos': produtos})
+
+@login_required(login_url='/login/')
 def list_produtos(request):
     produtos = Produtos.objects.filter(ativo = True)
     return render(request, 'list_produtos.html', {'Produtos': produtos})
@@ -51,7 +56,7 @@ def desfavoritar(request, id_produto):
     produtos.favorito = False
     produtos.save()
     produtos = Produtos.objects.filter(favorito=True)
-    return render(request, 'list_favoritos.html', {'Produtos': produtos})
+    return redirect('/favoritos/')
 
 def alterar(request,id_usuario):
     usuario = Usuario.objects.get(id_usuario = id_usuario)

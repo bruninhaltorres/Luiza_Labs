@@ -1,0 +1,29 @@
+{% extends "page.html" %}
+
+{% block content %}
+    <h1 class="text-center">Detalhes do produto</h1>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div style="border-color: rgb(85, 26, 119); border-style: solid; width: 356px; height: 360px;">
+                      <img src="{{ Produtos.image.url }}" alt="Norway" width="350" height="320" style="margin-top: 16px;"> 
+                    </div>
+                      <br>
+                  </div>
+                <br>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-8">
+                <p><b>Produto: </b>{{ Produtos.title }}</p>                  
+                <p><b>Marca: </b>{{ Produtos.brand }}</p> 
+                <p><b>Preço: </b>{{ Produtos.price }}</p>
+
+                <a href="/desfavoritar/{{ Produtos.id_produto }}/">
+                  <button type="button" class="btn btn-primary"> <span class="material-icons">favorite</span>Desfavoritar</button>
+                </a>
+            </div>
+        </div>
+    </div>  
+    <br>
+{% endblock %}

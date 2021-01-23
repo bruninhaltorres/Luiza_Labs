@@ -9,6 +9,7 @@
             <thead>
               <tr>
                 <th scope="col">Produto:</th>
+                <th scope="col">Visualizar:</th>
                 <th scope="col">Desfavoritar:</th>
                 
               </tr>
@@ -17,6 +18,7 @@
                 {% for p in Produtos %}
                 <tr>
                     <td>{{ p.title }}</td> 
+                    <td><a href="../produtos_favoritado/{{ p.id_produto }}"><span class="material-icons">visibility</span></a></td>
                     <td><a href="../desfavoritar/{{ p.id_produto }}"><span class="material-icons">favorite</span></a></td>
                 </tr>
                 {% endfor %}

@@ -12,23 +12,36 @@
                 </div>
             </div>
         </form>
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">Produto:</th>
-                <th scope="col">Visualizar:</th>
-                
-              </tr>
-            </thead>
-            <tbody>
+
+{% block style %}
+    <style>
+        div.polaroid {
+            width: 250px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            text-align: center;
+        }
+        div.container {
+            padding: 10px;
+        }
+    </style>
+{% endblock %}
+
+    <div class="container">
+            <div class="row">
                 {% for p in Produtos %}
-                <tr>
-                    <td>{{ p.title }}</td> 
-                    <td><a href="../produto/{{ p.id_produto }}"><span class="material-icons">visibility</span></a></td>
-                </tr>
+                    <div class="col-sm-12 col-md-6 col-lg-4">
+                        <a href="../produto/{{ p.id_produto }}">
+                            <div class="polaroid">
+                                <img src="{{ p.image.url }}" alt="Norway" style="width:100%">
+                                <div class="container">
+                                    <p>{{ p.title }}</p>
+                                </div>
+                            </div>
+                        </a>
+                        <br>
+                    </div>                
                 {% endfor %}
-            </tbody>
-          </table>
-    </div>  
+            </div>
+        </div>  
     </div>  
 {% endblock %}

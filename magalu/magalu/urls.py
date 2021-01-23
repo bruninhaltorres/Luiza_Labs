@@ -18,6 +18,8 @@ from django.urls import path, include
 from app import views
 from . import settings
 from django.conf.urls import url
+from django.contrib.staticfiles.urls import static, staticfiles_urlpatterns
+from . import settings
 
 
 urlpatterns = [
@@ -35,8 +37,11 @@ urlpatterns = [
     path('inativar/<id_usuario>/', views.inativar),
     path('produto/', views.list_produtos),
     path('produto/<id_produto>/', views.detail_produto),
+    path('produtos_favoritado/<id_produto>/', views.detail_produto_favoritado),
     path('favoritar/<id_produto>/', views.favoritar),
     path('desfavoritar/<id_produto>/', views.desfavoritar),
     path('favoritos/', views.favoritos)
 ]
 
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
