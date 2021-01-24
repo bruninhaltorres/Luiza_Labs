@@ -2,12 +2,12 @@
 
 {% block content %}
     <div class="container mt-3">
-        <h1 class="text-center">Todos os produto</h1>
-        <form enctype="multipart/form-data" action="submit/", method="POST">{% csrf_token %}
+        <h1 class="text-center">Todos os produtos</h1>
+        <form enctype="multipart/form-data" action="pesquisar/", method="POST">{% csrf_token %}
             <div class="container">
                 <div class="form-group row">
                     <label style="margin-right: 10px;">Pesquisar produto:</label>
-                    <input type="text" class="form-control col-5" style="margin-right:10px;" name="nome_usuario" value="{{ usuario.nome_usuario }}">
+                    <input type="text" class="form-control col-5" style="margin-right:10px;" name="title" value="{{ Produtos.title }}">
                     <button type="submit/" class="btn btn-primary"><span class="material-icons" >search</span> Pesquisar</button>
                 </div>
             </div>

@@ -35,7 +35,7 @@ def detail_produto_favoritado(request, id_produto):
 
 @login_required(login_url='/login/')
 def list_produtos(request):
-    produtos = Produtos.objects.filter(ativo = True)
+    produtos = Produtos.objects.all()
     return render(request, 'list_produtos.html', {'Produtos': produtos})
 
 @login_required(login_url='/login/')
@@ -60,20 +60,14 @@ def desfavoritar(request, id_produto):
 
 def alterar(request,id_usuario):
     usuario = Usuario.objects.get(id_usuario = id_usuario)
-    usuario_form = UserModelForm(request.POST or None)
-    if usuario_form.is_valid():
-        usuario_form.save()
     return render(request, 'alterar.html', {'usuario': usuario})
 
 def update_usuario(request, id_usuario):
-    nome = request.POST.get('first_name')
-    username = request.POST.get('username')
-    password = request.POST.get('password')
+    nome = request.POST.get('name')
     email = request.POST.get('email')
-    last_name = request.POST.get('last_name')
     usuario = Usuario.objects.get(id_usuario = id_usuario)
     usuario.delete()
-    usuario = Usuario.objects.create(first_name = nome, username = username, password = password, email = email, last_name = last_name)
+    usuario = Usuario.objects.create(name = nome, email = email)
     return render(request, 'detail.html', {'Usuario': usuario})
 
 def inativar(request, id_usuario):
@@ -101,21 +95,6 @@ def submit_login(request):
             messages.error(request, 'Usuário e senha inválidos. Por favor, tente novamente.')
     return redirect('/login/')
 
-def submit(request):
-    nome = request.POST.get('first_name')
-    sobrenome = request.POST.get('last_name')
-    username = request.POST.get('username')
-    email = request.POST.get('email')
-    senha = request.POST.get('password')
-    usuario = Usuario.objects.create(first_name=nome, last_name=sobrenome, username=username, email=email, password=senha)
-    form = UserModelForm(request.POST or None)
-    context = {'form': form}
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-    return render(request, 'sucess.html')
-
-
 def cadastro(request):
     form = UserModelForm(request.POST or None)
     context = {'form': form}
@@ -123,4 +102,51 @@ def cadastro(request):
         if form.is_valid():
             form.save()
     return render(request, 'cadastro.html', context)
+
+def submit(request):
+    nome = request.POST.get('name')
+    nome = request.POST.get('first_name')
+    email = request.POST.get('email')
+    usuario = Usuario.objects.create(name=nome, email=email)
+    form = UserModelForm(request.POST or None)
+    context = {'form': form}
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+    return render(request, 'sucess.html')
+
+def cadastro_cliente(request):
+    return render(request, 'cadastro_cliente.html')
+
+def cliente_submit(request):
+    nome = request.POST.get('name')
+    email = request.POST.get('email')
+    usuario = Usuario.objects.filter(ativo = True)
+    igual = 0
+    for u in usuario:
+        if email == u.email:
+            igual = 1
+            
+    if igual != 1:
+        print('email', email)
+        print('u.email', u.email)
+        print('IGUAL:', igual)
+        usuario = Usuario.objects.create(name=nome, email=email)
+        return redirect('/perfil/')
+    else:
+        return render(request, 'fail.html')
+
+def pesquisar(request):
+    title = request.POST.get('title')    
+    existe = 0
+    produto = Produtos.objects.filter(favorito=False)
+    for p in produto:
+        if title == p.title:
+            existe = 1
+    
+    if existe == 1:
+        produtos = Produtos.objects.get(title = title)
+        return render(request, 'detail_produtos.html', {'Produtos': produtos})
+    else:
+        return render(request, 'pesquisa_erro.html')
 

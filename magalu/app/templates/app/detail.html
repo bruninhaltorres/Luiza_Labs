@@ -1,7 +1,7 @@
 {% extends "page.html" %}
 
 {% block content %}
-    <h1 class="text-center">Suas informações</h1>
+    <h1 class="text-center">Informações</h1>
     <br>
   <!-- Ini Modal -->
   <div class="modal fade" id="modal_confirm">
@@ -30,14 +30,13 @@
                 <br>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-8">
-                <p><b>Nome completo: </b>{{ Usuario.first_name }} {{ Usuario.last_name }}</p>                  
-                <p><b>Username: </b>{{ Usuario.username }}</p> 
+                <p><b>Nome: </b>{{ Usuario.name }}</p>
                 <p><b>Email: </b>{{ Usuario.email }}</p>
 
                 <a href="/alterar/{{ Usuario.id_usuario }}/">
-                  <button type="button" class="btn btn-primary">Editar informações</button>
+                  <button type="button" class="btn btn-primary">Editar</button>
                 </a>
-                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Apagar perfil</button>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Apagar</button>
             </div>
         </div>
     </div>  

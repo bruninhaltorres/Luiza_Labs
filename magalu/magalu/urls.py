@@ -25,8 +25,11 @@ from . import settings
 urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
+    path('pesquisar/', views.pesquisar),
     path('cadastro/', views.cadastro, name = 'cadastro'),
     path('cadastro/submit/', views.submit, name = 'submit'),
+    path('cadastro_cliente/', views.cadastro_cliente),
+    path('cadastro_cliente/submit/', views.cliente_submit),
     path('login/', views.login_user),
     path('login/submit/', views.submit_login),
     path('logout/', views.logout_user),
