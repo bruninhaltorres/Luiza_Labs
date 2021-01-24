@@ -12,10 +12,10 @@
               </tr>
             </thead>
             <tbody>
-                {% for u in Usuario %}
+                {% for c in Cliente %}
                 <tr>
-                    <td>{{ u.name }}</td> 
-                    <td><a href="../perfil/{{ u.id_usuario }}"><span class="material-icons">visibility</span></a></td>
+                    <td>{{ c.name }}</td> 
+                    <td><a href="../perfil/{{ c.id_cliente }}"><span class="material-icons">visibility</span></a></td>
                 </tr>
                 {% endfor %}
                 <a href="/cadastro_cliente/">

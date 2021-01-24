@@ -14,7 +14,7 @@
         </div>        
         <!-- Modal body -->
         <div class="modal-body text-right">
-            <a href="/inativar/{{ Usuario.id_usuario }}">
+            <a href="/deletar/{{ Cliente.id_cliente }}">
               <button type="button" class="btn btn-danger">SIM</button>
             </a>
             <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
@@ -30,10 +30,10 @@
                 <br>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-8">
-                <p><b>Nome: </b>{{ Usuario.name }}</p>
-                <p><b>Email: </b>{{ Usuario.email }}</p>
+                <p><b>Nome: </b>{{ Cliente.name }}</p>
+                <p><b>Email: </b>{{ Cliente.email }}</p>
 
-                <a href="/alterar/{{ Usuario.id_usuario }}/">
+                <a href="/alterar/{{ Cliente.id_cliente }}/">
                   <button type="button" class="btn btn-primary">Editar</button>
                 </a>
                   <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal_confirm">Apagar</button>

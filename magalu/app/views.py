@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from app.forms import UserModelForm
 from django.http import HttpResponse
-from .models import Usuario, Produtos
+from .models import Cliente, Produtos
 from django.views.decorators.http import require_POST
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
@@ -15,13 +15,13 @@ def index(request):
 
 @login_required(login_url='/login/')
 def perfil(request):
-    usuario = Usuario.objects.filter(ativo = True)
-    return render(request, 'perfil.html', {'Usuario': usuario})
+    cliente = Cliente.objects.filter(ativo = True)
+    return render(request, 'perfil.html', {'Cliente': cliente})
 
 @login_required(login_url='/login/')
-def perfil_id(request, id_usuario):
-    usuario = Usuario.objects.get(id_usuario = id_usuario)
-    return render(request, 'detail.html', {'Usuario': usuario})
+def perfil_id(request, id_cliente):
+    cliente = Cliente.objects.get(id_cliente = id_cliente)
+    return render(request, 'detail.html', {'Cliente': cliente})
 
 @login_required(login_url='/login/')
 def detail_produto(request, id_produto):
@@ -48,7 +48,13 @@ def favoritar(request, id_produto):
 @login_required(login_url='/login/')
 def favoritos(request):
     produtos = Produtos.objects.filter(favorito=True)
-    return render(request, 'list_favoritos.html', {'Produtos': produtos})
+    fav = 0
+    for p in produtos:
+        fav += 1
+    if fav != 0:
+        return render(request, 'list_favoritos.html', {'Produtos': produtos})
+    else:
+        return render(request, 'not_fav.html')
 
 @login_required(login_url='/login/')
 def desfavoritar(request, id_produto):
@@ -58,22 +64,22 @@ def desfavoritar(request, id_produto):
     produtos = Produtos.objects.filter(favorito=True)
     return redirect('/favoritos/')
 
-def alterar(request,id_usuario):
-    usuario = Usuario.objects.get(id_usuario = id_usuario)
-    return render(request, 'alterar.html', {'usuario': usuario})
+def alterar(request,id_cliente):
+    cliente = Cliente.objects.get(id_cliente = id_cliente)
+    return render(request, 'alterar.html', {'Cliente': cliente})
 
-def update_usuario(request, id_usuario):
+def update_cliente(request, id_cliente):
     nome = request.POST.get('name')
     email = request.POST.get('email')
-    usuario = Usuario.objects.get(id_usuario = id_usuario)
-    usuario.delete()
-    usuario = Usuario.objects.create(name = nome, email = email)
-    return render(request, 'detail.html', {'Usuario': usuario})
+    cliente = Cliente.objects.get(id_cliente = id_cliente)
+    cliente.delete()
+    cliente = Cliente.objects.create(name = nome, email = email)
+    return render(request, 'detail.html', {'Cliente': cliente})
 
-def inativar(request, id_usuario):
-    usuario = Usuario.objects.get(id_usuario = id_usuario)
-    usuario.delete()
-    usuario = Usuario.objects.all()
+def deletar(request, id_cliente):
+    cliente = Cliente.objects.get(id_cliente = id_cliente)
+    cliente.delete()
+    cliente = Cliente.objects.all()
     return redirect('/perfil/')
 
 def login_user(request):
@@ -107,7 +113,7 @@ def submit(request):
     nome = request.POST.get('name')
     nome = request.POST.get('first_name')
     email = request.POST.get('email')
-    usuario = Usuario.objects.create(name=nome, email=email)
+    cliente = Cliente.objects.create(name=nome, email=email)
     form = UserModelForm(request.POST or None)
     context = {'form': form}
     if request.method == 'POST':
@@ -121,32 +127,30 @@ def cadastro_cliente(request):
 def cliente_submit(request):
     nome = request.POST.get('name')
     email = request.POST.get('email')
-    usuario = Usuario.objects.filter(ativo = True)
+    cliente = Cliente.objects.filter(ativo = True)
     igual = 0
-    for u in usuario:
-        if email == u.email:
+    for c in cliente:
+        if email == c.email:
             igual = 1
             
     if igual != 1:
-        print('email', email)
-        print('u.email', u.email)
-        print('IGUAL:', igual)
-        usuario = Usuario.objects.create(name=nome, email=email)
+        cliente = Cliente.objects.create(name=nome, email=email)
         return redirect('/perfil/')
     else:
         return render(request, 'fail.html')
 
 def pesquisar(request):
     title = request.POST.get('title')    
-    existe = 0
-    produto = Produtos.objects.filter(favorito=False)
-    for p in produto:
+    produto_false = Produtos.objects.filter(favorito=False)
+    produto_true = Produtos.objects.filter(favorito=True)
+    for p in produto_false:
         if title == p.title:
-            existe = 1
-    
-    if existe == 1:
-        produtos = Produtos.objects.get(title = title)
-        return render(request, 'detail_produtos.html', {'Produtos': produtos})
-    else:
-        return render(request, 'pesquisa_erro.html')
+            produtos = Produtos.objects.get(title = title)
+            return render(request, 'detail_produtos.html', {'Produtos': produtos})
+    for p in produto_true:
+        if title == p.title:
+            produtos = Produtos.objects.get(title = title)
+            return render(request, 'detail_produtos_favoritados.html', {'Produtos': produtos})
+
+    return render(request, 'pesquisa_erro.html')
 

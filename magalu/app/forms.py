@@ -13,7 +13,6 @@ class UserModelForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'username', 'email', 'password', 'is_staff']
         widget = {
             'first_name': forms.TextInput(attrs = {'class': 'form-control', 'maxlength': 255}),
-            'last_name': forms.TextInput(attrs = {'class': 'form-control', 'maxlength': 255}),
             'username': forms.TextInput(attrs = {'class': 'form-control', 'maxlength': 255}),
             'email': forms.TextInput(attrs = {'class': 'form-control', 'maxlength': 255}),
             'password': forms.PasswordInput(attrs = {'class': 'form-control', 'maxlength': 255}),

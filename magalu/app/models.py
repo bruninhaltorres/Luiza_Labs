@@ -2,8 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-class Usuario(models.Model):
-    id_usuario = models.AutoField(primary_key=True, null=False, unique=True)
+class Cliente(models.Model):
+    id_cliente = models.AutoField(primary_key=True, null=False, unique=True)
     name = models.CharField(max_length=200)
     email = models.EmailField(unique=True)
     ativo = models.BooleanField(default=True)
@@ -18,7 +18,7 @@ class Produtos(models.Model):
     price = models.FloatField()
     image = models.ImageField(upload_to='app')
     favorito = models.BooleanField(default=False)
-    reviewScore = models.IntegerField(null=True)
+    reviewScore = models.FloatField(null=True)
 
     def __str__(self):
         return str(self.title)
