@@ -1,10 +1,9 @@
 # Luiza_Labs
 
-Esse repositório foi criado para compartilhar o projeto desenvolvido por mim para o processo seletivo da Luiza Labs.
+Esse repositório foi criado no intuito de compartilhar o projeto desenvolvido por mim para o processo seletivo da Luiza Labs.
+No mesmo foi utilizado a linguagem de programação Python, Templates, Django e o banco de dados Sqlite3.
 
-No mesmo foi utilizado a linguagem de programação Python, templates, django e o banco de dados sqlite3.
+### Passo a passo:
 
-## Passo a passo:
-
-* 1º: Faça o download do repositório usando o comando git clone <link_do_repositorio>'
+* 1º: Faça o download do repositório usando o comando `git clone <link_do_repositorio>`
 
