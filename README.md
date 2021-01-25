@@ -7,7 +7,7 @@ Foi utilizado a linguagem de programação Python, Templates, Django e o banco d
 
 1. Faça o download do repositório usando o comando `git clone <link_do_repositorio>`
 2. Vá até a pasta onde se encontra o executavel *manage.py* : `cd Luiza_Labs/magalu`
-3. Execute o comando `python manage.py runserver`
+3. Execute o comando `python manage.py runserver`.
 Importante ressaltar que para a execução do 3º passo é necessário ter o Django instalado.
 4. Abra o seu servidor de preferência e busque por <http://localhost:8000/> ou [clique aqui](http://localhost:8000/)
 
