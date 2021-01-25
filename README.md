@@ -5,10 +5,10 @@ No mesmo foi utilizado a linguagem de programação Python, Templates, Django e 
 
 ### Passo a passo:
 
-* 1º: Faça o download do repositório usando o comando `git clone <link_do_repositorio>`
-* 2º: Vá até a pasta onde se encontra o executavel *manage.py* : `cd Luiza_Labs/magalu`
-* 3º: Execute o comando `python manage.py runserver`
-* 4º: Abra o seu servidor de preferência e busque por <http://localhost:8000/> ou [clique aqui](http://localhost:8000/)
+1. Faça o download do repositório usando o comando `git clone <link_do_repositorio>`
+2. Vá até a pasta onde se encontra o executavel *manage.py* : `cd Luiza_Labs/magalu`
+3. Execute o comando `python manage.py runserver`
+4. Abra o seu servidor de preferência e busque por <http://localhost:8000/> ou [clique aqui](http://localhost:8000/)
 
 ### Considerações sobre o site:
 
