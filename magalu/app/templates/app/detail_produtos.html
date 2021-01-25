@@ -1,14 +1,26 @@
 {% extends "page.html" %}
 
 {% block content %}
+
+  {% block style %}
+      <style>
+          div.polaroid {
+              width: 350px;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              text-align: center;
+          }
+          div.container {
+              padding: 10px;
+          }
+      </style>
+  {% endblock %}
+
     <h1 class="text-center">Detalhes do produto<span class="material-icons">loyalty</span></h1>
     <br>
       <div class="container">
           <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-4">
-                <div style="border-color: rgb(85, 26, 119); border-style: solid; width: 356px; height: 360px;">
-                  <img src="{{ Produtos.image.url }}" alt="Norway" width="350" height="320" style="margin-top: 16px;"> 
-                </div>
+              <div class="polaroid">
+                  <img src="{{ Produtos.image.url }}" alt="Norway" width="350" height="350" style="margin-top: 16px;"> 
                   <br>
               </div>
               <div class="col-sm-12 col-md-12 col-lg-8">
