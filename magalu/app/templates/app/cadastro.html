@@ -5,25 +5,17 @@
     <br>
     <form enctype="multipart/form-data" action="/cadastro/submit/", method="POST">{% csrf_token %}
         <div class="container">
-            <div class="form-group">
-                <label>Nome:</label>
-                {{ form.first_name }}
-            </div>
 
             <div class="form-group">
                 <label>Username:</label>
                 {{ form.username }}
             </div>  
-
-            <div class="form-group">
-                <label>E-mail:</label>
-                {{ form.email }}
-            </div>
             
             <div class="form-group">
                 <label>Senha:</label>
                 {{ form.password }}
             </div>
+
             <button type="submit/" class="btn btn-primary">Cadastrar</button>
         </div>
       </form>

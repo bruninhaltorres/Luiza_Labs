@@ -110,25 +110,12 @@ def cadastro(request):
     return render(request, 'cadastro.html', context)
 
 def submit(request):
-    nome = request.POST.get('name')
-    nome = request.POST.get('first_name')
-    email = request.POST.get('email')
-    cliente = Cliente.objects.filter(ativo = True)
-    igual = 0
-    for c in cliente:
-        if email == c.email:
-            igual = 1
-            
-    if igual != 1:
-        cliente = Cliente.objects.create(name=nome, email=email)
-        form = UserModelForm(request.POST or None)
-        context = {'form': form}
-        if request.method == 'POST':
-            if form.is_valid():
-                form.save()
-        return render(request, 'sucess.html')
-    else:
-        return render(request, 'fail_usuario.html')
+    form = UserModelForm(request.POST or None)
+    context = {'form': form}
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+    return render(request, 'sucess.html')
 
 def cadastro_cliente(request):
     return render(request, 'cadastro_cliente.html')
