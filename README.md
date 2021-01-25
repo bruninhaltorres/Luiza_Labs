@@ -5,7 +5,7 @@ Foi utilizado a linguagem de programação Python, Templates, Django e o banco d
 
 ### Passo a passo:
 
-1. Faça o download do repositório usando o comando `git clone <link_do_repositorio>`
+1. Faça o download do repositório como preferir. Uma das opções é usando o comando `git clone <link_do_repositorio>`
 2. Vá até a pasta onde se encontra o executavel *manage.py* : `cd Luiza_Labs/magalu`
 3. Execute o comando `python manage.py runserver`.
 Importante ressaltar que para a execução deste passo é necessário ter o Django instalado.
@@ -14,7 +14,7 @@ Importante ressaltar que para a execução deste passo é necessário ter o Djan
 ### Considerações sobre o site:
 
 * Sendo sua primeira vez no site, você não terá uma conta. Então, clique na opção **Register here** e faça seu cadastro como **usuario**. 
-* Em seguida, faça o login com o nome de usuario e senha criados. 
+* Em seguida, faça o login com o nome de usuário e senha criados. 
 * Agora, já na página inicial, será possível ver todos os produtos, buscar entre os que estão disponíveis e favoritá-los. 
 * Na aba *Clientes* fica a principal parte, que é o CRUD. Lá é possivel adicionar um novo cliente, visualizar, atualizar e ainda remover.
 
