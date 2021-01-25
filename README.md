@@ -12,8 +12,8 @@ No mesmo foi utilizado a linguagem de programação Python, Templates, Django e 
 
 ### Considerações sobre o site:
 
-Sendo sua primeira vez no site, você não terá uma conta. Então, clique na opção **Register here** e faça seu cadastro como **usuario**. 
-Em seguida, faça o login com o nome de usuario e senha criados. 
-Agora, já na página inicial, será possível ver todos os produtos, buscar entre os que estão disponíveis e favoritá-los. 
-Na aba *Clientes* fica a principal parte, que é o CRUD. Lá é possivel adicionar um novo cliente, visualizar, atualizar e ainda remover.
+* Sendo sua primeira vez no site, você não terá uma conta. Então, clique na opção **Register here** e faça seu cadastro como **usuario**. 
+* Em seguida, faça o login com o nome de usuario e senha criados. 
+* Agora, já na página inicial, será possível ver todos os produtos, buscar entre os que estão disponíveis e favoritá-los. 
+* Na aba *Clientes* fica a principal parte, que é o CRUD. Lá é possivel adicionar um novo cliente, visualizar, atualizar e ainda remover.
 
