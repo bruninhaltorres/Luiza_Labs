@@ -1,0 +1,73 @@
+[
+    {"model": "app.produtos", 
+    "pk": 1, 
+    "fields": {
+        "title": "Condicionador", 
+        "brand": "Salon Line", 
+        "price": 20.5, 
+        "image": "app/condicionador.jpg", 
+        "favorito": false, 
+        "reviewScore": 8.75
+        }
+    }, 
+
+    {"model": "app.produtos", 
+    "pk": 2, 
+    "fields": {
+        "title": "Xampu", 
+        "brand": "Salon Line", 
+        "price": 17.5, 
+        "image": "app/shampoo.jpg", 
+        "favorito": false, 
+        "reviewScore": 9.8
+        }
+    },
+
+    {"model": "app.produtos", 
+    "pk": 3, 
+    "fields": {
+        "title": "Creme de cabelo", 
+        "brand": "Salon Line", 
+        "price": 12.5, 
+        "image": "app/creme.jpg", 
+        "favorito": false, 
+        "reviewScore": 9.3
+        }
+    },
+
+    {"model": "app.produtos", 
+    "pk": 4, 
+    "fields": {
+        "title": "Perfume", 
+        "brand": "Boticario", 
+        "price": 176.5, 
+        "image": "app/perfume.jpg", 
+        "favorito": false, 
+        "reviewScore": 9.75
+        }
+    },
+
+    {"model": "app.produtos", 
+    "pk": 5, 
+    "fields": {
+        "title": "Desodorante", 
+        "brand": "Rexona", 
+        "price": 16.5, 
+        "image": "app/desodorante.jpg", 
+        "favorito": false, 
+        "reviewScore": 10
+        }
+    },
+
+    {"model": "app.produtos", 
+    "pk": 6, 
+    "fields": {
+        "title": "Hidratante", 
+        "brand": "Nivea", 
+        "price": 11.7, 
+        "image": "app/hidratante.jpg", 
+        "favorito": false, 
+        "reviewScore": 7.5
+        }
+    }
+]
