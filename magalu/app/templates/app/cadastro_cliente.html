@@ -5,14 +5,13 @@
     <br>
     <form enctype="multipart/form-data" action="submit/", method="POST">{% csrf_token %}
         <div class="container">
-            <input type="number" class="form-control" name="Cliente.id_cliente" value="{{ Cliente.id_cliente }}" hidden>
             <div class="form-group">
                 <label>Nome:</label>
-                <input type="text" class="form-control" name="name" value="{{ Cliente.name }}">
+                <input type="text" class="form-control" name="name" value="{{ Cliente.name }}" required>
             </div>
             <div class="form-group">
                 <label>Email:</label>
-                <input type="email"min=0 step="0.01" class="form-control" name="email" value="{{ Cliente.email }}">
+                <input type="email"min=0 step="0.01" class="form-control" name="email" value="{{ Cliente.email }}" required>
             </div>
             <button type="submit/" class="btn btn-success"> Cadastrar</button>
         </div>

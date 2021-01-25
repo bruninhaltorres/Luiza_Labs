@@ -4,8 +4,8 @@ from django.db import models
 # Create your models here.
 class Cliente(models.Model):
     id_cliente = models.AutoField(primary_key=True, null=False, unique=True)
-    name = models.CharField(max_length=200)
-    email = models.EmailField(unique=True)
+    name = models.CharField(max_length=200, blank=False, null=False)
+    email = models.EmailField(unique=True, blank=False, null=False)
     ativo = models.BooleanField(default=True)
 
     def __str__(self):

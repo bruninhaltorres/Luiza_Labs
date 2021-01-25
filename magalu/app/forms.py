@@ -10,7 +10,7 @@ class UserModelForm(forms.ModelForm):
     User._meta.get_field('first_name').blank = False
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password', 'is_staff']
+        fields = ['first_name', 'username', 'email', 'password', 'is_staff']
         widget = {
             'first_name': forms.TextInput(attrs = {'class': 'form-control', 'maxlength': 255}),
             'username': forms.TextInput(attrs = {'class': 'form-control', 'maxlength': 255}),
